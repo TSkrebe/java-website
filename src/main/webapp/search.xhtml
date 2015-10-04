@@ -1,0 +1,25 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:f="http://java.sun.com/jsf/core"
+		template="/WEB-INF/templates/template.xhtml">
+		
+		<f:metadata>
+			<f:viewParam name="phrase" value="#{searchPage.phrase}"/>
+			<f:viewAction action="#{searchPage.init()}"/>
+		</f:metadata>
+
+		
+		
+		<ui:define name="content">
+			
+			<h2>Here's what was found</h2>	
+			<h:dataTable var="article" value="#{searchPage.articles}">
+				
+				<h:column>
+					#{article.summary}
+				</h:column>
+			</h:dataTable>
+		</ui:define>
+
+</ui:composition>

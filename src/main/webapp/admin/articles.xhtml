@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/WEB-INF/templates/templateAdmin.xhtml">
+
+	<ui:define name="content">
+		
+		<h:dataTable id="table" var="article" value="#{articlesBackingBean.articles}">
+			<h:column>
+				<f:facet name="header">
+					id
+				</f:facet>
+				#{article.id}
+			</h:column>
+		
+			<h:column>
+				<f:facet name="header">
+					Title
+				</f:facet>
+				#{article.title}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					date
+				</f:facet>
+				#{article.date}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					Comments No.
+				</f:facet>
+				#{article.comments.size()}
+			</h:column>
+			
+			<h:column>
+				<h:form>
+					<h:commandLink value="delete"
+						action="#{articlesBackingBean.delete(article)}">
+						<f:ajax render="@this table" execute="@form" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			
+			<h:column>
+				<h:link outcome="/admin/edit?id=#{article.titleId}" value="edit"/>
+			</h:column>
+		</h:dataTable>
+
+	</ui:define>
+</ui:composition>

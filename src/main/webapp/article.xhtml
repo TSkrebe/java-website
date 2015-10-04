@@ -1,0 +1,83 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/WEB-INF/templates/template.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value="#{articlePage.article.titleId}"
+			required="#{!facesContext.postback}"
+			requiredMessage="no such id article" />
+
+		<f:viewAction action="#{articlePage.findArticle()}" />
+	</f:metadata>
+
+
+	<ui:define name="content">
+
+		<h:outputStylesheet name="css/article.css" />
+		<div class="mainContent">
+		
+			<div id="article" >
+
+				<h1>#{articlePage.article.title}</h1>
+				<div id="byline">
+					<label>#{articlePage.article.prettyByLine}</label>
+				</div>
+				<p>
+					<h:outputText value="#{articlePage.article.data}" escape="false"  styleClass="preformatted"/>
+				</p>
+			</div>
+			
+			<h:link id="comments" />
+			<h:panelGroup layout="block" id="commentsWrapper">
+				<h:panelGroup layout="block" id="commentsList" rendered="#{not empty articlePage.comments}">
+					<h2>
+						<h:outputLabel value="Comment Section" />
+					</h2>
+		
+					<h:dataTable var="comment" styleClass="wrapCells bottomLine"
+						value="#{articlePage.comments}" >
+						<h:column>
+							<strong>
+								<h:outputLabel value="#{comment.name} • "/>
+							</strong>
+							<cite id="commentDate">#{comment.prettyDate}</cite>
+							
+							<p>
+								<h:outputText value="#{comment.data}" styleClass="preformatted"/>
+							</p>
+						</h:column>
+		
+					</h:dataTable>
+				</h:panelGroup>
+			</h:panelGroup>
+			
+			
+			
+			<h2>Leave a comment</h2>
+			<h:form>
+				<h:panelGrid  columns="2"  styleClass="cellAlign">
+
+					<h:outputLabel for="name" styleClass="inputLabel" value="Name: " />
+					<h:inputText  styleClass="inputWidth" autocomplete="false" id="name"
+						value="#{articlePage.comment.name}" />
+
+					<h:outputLabel styleClass="inputLabel" value="Comment: "
+						for="comment" />
+					<h:inputTextarea styleClass="inputWidth" rows="5" id="comment"
+						value="#{articlePage.comment.data}" />
+					<h:panelGroup/>
+					<h:commandButton  value="Send" styleClass="sendButton"
+						action="#{articlePage.persistComment()}">
+						<f:ajax execute="@form" render="@form commentsWrapper" />
+					</h:commandButton>
+				</h:panelGrid>
+					<h:message for="name" styleClass="messages" />
+					<h:message for="comment" styleClass="messages" />
+			</h:form>
+
+		</div>
+	</ui:define>
+
+</ui:composition>

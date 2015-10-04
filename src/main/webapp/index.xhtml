@@ -1,0 +1,38 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/WEB-INF/templates/template.xhtml">
+
+
+	<ui:define name="content">
+		<h:outputStylesheet name="css/index.css" />
+
+		<h:dataTable styleClass="mainContent bottomLine wrapCells" id="articles"
+			var="article" value="#{welcomePage.articles}">
+			<h:column id="colum">
+				<div id="article">
+					<h1>
+						<h:link styleClass="titleColor"
+							outcome="/article.xhtml?id=#{article.titleId}"
+							value="#{article.title}" />
+					</h1>
+					<div id="byline">
+						<label>#{article.prettyByLine}</label>
+						<h:link
+							value="#{article.comments.size()} #{article.comments.size() == 1 ? 'comment' : 'comments'}"
+							fragment="comments" styleClass="linkColor"
+							outcome="/article.xhtml?id=#{article.titleId}" />
+					</div>
+
+					<p>
+						<h:outputText value="#{article.summary}" escape="false"
+							styleClass="preformatted" />
+
+					</p>
+
+				</div>
+			</h:column>
+		</h:dataTable>
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,207 @@
+body {
+	font-size: 16px;
+}
+
+html {
+	overflow-y: scroll;
+	background: url(/javax.faces.resource/bg.jpg.xhtml?ln=img) center center fixed;
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+h1 {
+	margin-top: 0px;
+	margin-bottom: 3px;
+}
+a {
+	text-decoration: none;
+	outline: none
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+textarea {
+	resize: none;
+}
+
+div#container {
+	width: 1100px;
+	margin: 0px auto;
+	background: rgba(0, 0, 0, 0.6);
+}
+
+/* this is header */
+div#header {
+	width: inherit;
+	height: 150px;
+	position: relative;
+}
+div#banner{
+	padding-left: 20px;
+	position: absolute;
+  	top: 50%;
+    transform: translateY(-70%);
+}
+div#banner *{
+	color: white;
+}
+
+/* this is menu */
+
+div#menuDiv{
+	width: inherit;
+	height: 50px;
+	background-color: rgba(192,192,192,0.2);
+}
+
+#menu {
+	float: left;
+	height: inherit;
+	padding:0;
+    margin: 0;
+}
+#menu *{
+	color: white; 
+}
+div#icons{
+	float: right;
+	height: inherit;
+	padding-right: 15px;
+}
+
+div#icons img{
+	padding-top: 5px;
+	margin-left: 5px;
+}
+#menu li {
+    line-height: 50px;
+
+	display: inline;
+	font-size: 30px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+/* content that is different from page to page */
+
+div#content {
+	float: left;
+	width: 750px;
+	background: white;
+}
+.mainContent{
+
+	margin-left: 15px;
+	margin-right: 20px;
+}
+
+
+/* right sidebar */
+div#rightPanel {
+	float: right;
+	width: 340px;
+	margin-left: 10px;
+}
+
+div#searchDiv {
+	background-color: white;
+	height: 160px;
+	position: relative;
+	margin-bottom: 10px;
+}
+
+div#searchDiv table{
+	  position: absolute;
+	  top: 45%;
+	  transform: translateY(-50%);
+}
+div#recentComments {
+	padding:10px;
+	background-color: white;
+	margin-bottom: 10px;
+}
+div#recentComments h2{
+	margin-top:0;
+}
+div#subscribe{
+	background-color: white;
+	height: 140px;
+	padding-top: 50px;
+}
+
+p#comment {
+	margin: 0;
+	margin-bottom: 10px;
+}
+
+.search {
+	margin: 5px;
+	margin-top: 0;
+	padding: 5px;
+}
+
+.subscribe {
+	display: block;
+	width: 95%;
+	box-sizing: border-box;
+	margin: auto;
+	margin-bottom: 5px;
+	padding: 5px;
+}
+
+
+/* this is footer */
+
+div#footer {
+	clear: both;
+	position: relative;
+	background-color: rgba(192,192,192,0.2);
+	text-align: center;
+	z-index: 10;
+	height: 25px;
+	margin-top: -5px;
+}
+div#footer *{
+	color: white;
+}
+/* universal stuff */
+/* breaking new lines from database */
+
+table.wrapCells {
+	table-layout: fixed;
+	width: 95%;
+}
+
+table.wrapCells td {
+	word-wrap: break-word;
+}
+
+
+div#byline {
+	font-size: 13px;
+}
+div#byline a {
+	margin-left: 10px;
+}
+
+#breakLine {
+	margin-top: 5px;
+}
+
+.bottomLine td{
+	border-bottom: 2px blue;
+	border-bottom-style: ridge;
+}
+
+.linkColor {
+	color: blue;
+}
+
+.preformatted{
+	white-space: pre-wrap;
+}

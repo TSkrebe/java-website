@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+	<title>Welcome</title>
+	<h:outputStylesheet name="/css/template.css" />
+</h:head>
+<h:body>
+	<div id="container">
+	
+		<div id="header">
+			<div id="banner">
+				<h1>Titas Skrebe</h1>
+				<label>Student, programmer, technology enthusiast</label>
+			</div>
+		</div>
+		
+		<div id="menuDiv">
+			<ul id="menu">
+				<li><h:link outcome="/index.xhtml" value="Home" /></li>
+	
+				<li><h:link outcome="/about.xhtml" value="About" /></li>
+			</ul>
+			<div id="icons">
+				<a href="https://www.facebook.com/titas.skrebe"> 
+					<h:graphicImage alt="fb" value="/resources/img/fb.png" />
+				</a>
+					<a href="https://github.com/TSkrebe"> 
+					<h:graphicImage alt="github" value="/resources/img/github.png" />
+				</a>
+			</div>
+		</div>
+
+		<div id="content">
+			<ui:insert name="content">
+				[content part]
+			</ui:insert>
+		</div>
+		<div id="rightPanel">
+			<div id="searchDiv">
+
+				<h:form>
+					<h:panelGrid columns="2">
+
+						<h:outputLabel styleClass="search" value="Search" />
+						<h:panelGroup />
+
+						<h:inputText id="phrase" styleClass="search"
+							value="#{templatePage.searchPhrase}" />
+						<h:commandButton styleClass="search" value="Search"
+							action="#{templatePage.search()}" />
+
+						<h:message styleClass="search" for="phrase"></h:message>
+						<h:panelGroup />
+					</h:panelGrid>
+
+				</h:form>
+			</div>
+
+
+			<h:panelGroup id="recentComments" layout="block">
+				<h2>Recent Comments</h2>
+				<h:dataTable var="comment" value="#{templatePage.comments}"
+					styleClass="wrapCells bottomLine">
+					<h:column>
+						<p id="comment">
+							<strong>#{comment.name}</strong> on
+							<h:link value="#{comment.article.title}" styleClass="linkColor"
+								outcome="/article.xhtml?id=#{comment.article.titleId}" />
+							said: <br id="breakLine" /> #{comment.summary}
+						</p>
+					</h:column>
+				</h:dataTable>
+			</h:panelGroup>
+
+
+			<div id="subscribe">
+				<h:form>
+					<h:inputText a:placeholder="Your email:" styleClass="subscribe"
+						id="email" value="#{templatePage.email.email}" />
+					<h:commandButton styleClass="subscribe" value="Subscribe"
+						action="#{templatePage.subscribeEmail()}" />
+					<h:message for="email" styleClass="subscribe"/>
+				</h:form>
+
+			</div>
+		</div>
+		<div id="footer">
+			<label>Copyright ©. All rights reserved.</label>
+		</div>
+	</div>
+</h:body>
+</html>

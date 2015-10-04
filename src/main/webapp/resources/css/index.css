@@ -1,0 +1,14 @@
+table{
+	padding-bottom: 0px;
+}
+
+#article{
+	margin-bottom: 25px;
+	margin-top: 25px;
+}
+.titleColor{
+	color: black;
+}
+#article img {
+	max-width: 100%;
+}

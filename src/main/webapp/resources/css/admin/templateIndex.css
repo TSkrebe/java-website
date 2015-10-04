@@ -1,0 +1,9 @@
+div#post{
+	float: left;
+	width: 600px;
+	
+}
+div#images{
+	float: right;
+	width: 400px;
+}

@@ -1,0 +1,13 @@
+#container{
+	width: 1300px;
+	margin: 0 auto;
+}
+
+#leftPanel{
+	float: left;
+	width: 300px;
+}
+#content{
+	float: right;
+	width: 1000px;
+}

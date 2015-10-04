@@ -1,0 +1,51 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/WEB-INF/templates/templateAdmin.xhtml">
+
+
+	<ui:define name="content">
+	<h:outputStylesheet name="css/admin/templateIndex.css" />
+
+		<div id="post">
+
+			<h:form>
+				<h:panelGrid columns="2">
+	
+					<label>Title</label>
+					<h:inputText value="#{adminHomePage.article.title}"
+						styleClass="postInput" />
+	
+					<label>Post</label>
+					<h:inputTextarea value="#{adminHomePage.article.data}"
+						styleClass="postInput" />
+	
+					<h:panelGroup />
+					<h:commandButton value="Post" action="#{adminHomePage.post()}" />
+				</h:panelGrid>
+			</h:form>
+			<h:messages />
+			
+		</div>
+		
+		<div id="images">
+			<h:form enctype="multipart/form-data">
+				<h:inputFile id="file" value="#{adminHomePage.part}" />
+				<h:commandButton value="Upload" action="#{adminHomePage.upload()}" />
+			</h:form>
+			<h:form >
+				<h:commandButton value="Reload" action="#{adminHomePage.init()}">
+					<f:ajax execute="@form" render="imgs"/>
+				</h:commandButton>
+			</h:form>
+			<h:dataTable id="imgs" var="img" value="#{adminHomePage.images}">
+				<h:column>
+							<h:graphicImage value="#{img}" width="100" height="100"/>
+				</h:column>
+			</h:dataTable>
+		</div>
+
+		
+	</ui:define>
+</ui:composition>

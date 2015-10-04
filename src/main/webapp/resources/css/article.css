@@ -1,0 +1,35 @@
+#article label{
+		font-size: 13px;
+		
+}
+#article{
+	margin-bottom: 30px;
+	margin-top: 25px;
+}
+
+
+.inputWidth{
+	width: 400px;
+}
+.cellAlign td{
+	margin:0;
+}
+.sendButton{
+	width: 200px;
+	float: right;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.messages{
+	display: block;
+	color: red;
+}
+#commentDate{
+	font-size: 14px;
+}
+.inputLabel{
+
+}
+img {
+	max-width: 100%;
+}
